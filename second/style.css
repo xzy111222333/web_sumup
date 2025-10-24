@@ -1,0 +1,410 @@
+/* Neubrutalism Todo List - 避免蓝紫渐变 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Neubrutalism 调色板 - 避免蓝紫色系 */
+    --primary-color: #FF6B35; /* 橙红色 */
+    --secondary-color: #F7931E; /* 金黄色 */
+    --accent-color: #FF1B8D; /* 亮粉色 */
+    --success-color: #00D924; /* 亮绿色 */
+    --warning-color: #FFAA00; /* 橙色 */
+    --danger-color: #FF004D; /* 红色 */
+
+    --bg-color: #FFE5CC; /* 浅橙色背景 */
+    --surface-color: #FFFFFF;
+    --text-color: #2D3436;
+    --text-secondary: #636E72;
+    --border-color: #2D3436;
+
+    --shadow-color: #000000;
+    --highlight-color: #FFF;
+}
+
+body {
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    line-height: 1.4;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background-color: var(--surface-color);
+    border: 4px solid var(--border-color);
+    box-shadow: 8px 8px 0 var(--shadow-color);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.header {
+    background-color: var(--primary-color);
+    padding: 30px;
+    border-bottom: 4px solid var(--border-color);
+    position: relative;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 20px;
+    height: 20px;
+    background-color: var(--warning-color);
+    border: 2px solid var(--border-color);
+    transform: rotate(45deg);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--surface-color);
+    text-shadow: 3px 3px 0 var(--shadow-color);
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.title i {
+    font-size: 2.2rem;
+    transform: rotate(-10deg);
+}
+
+.date {
+    background-color: var(--surface-color);
+    color: var(--primary-color);
+    padding: 10px 15px;
+    border: 3px solid var(--border-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 4px 4px 0 var(--shadow-color);
+    transform: rotate(-2deg);
+}
+
+.main-content {
+    padding: 30px;
+}
+
+.input-section {
+    margin-bottom: 30px;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+}
+
+.task-input {
+    flex: 1;
+    padding: 18px 20px;
+    border: 4px solid var(--border-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: var(--surface-color);
+    color: var(--text-color);
+    transition: all 0.1s ease;
+    box-shadow: 5px 5px 0 var(--shadow-color);
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 5px 5px 0 var(--shadow-color);
+    transform: translate(-2px, -2px);
+}
+
+.task-input::placeholder {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.add-btn {
+    background-color: var(--success-color);
+    border: 4px solid var(--border-color);
+    padding: 15px 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 0 var(--shadow-color);
+    transition: all 0.1s ease;
+}
+
+.add-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--shadow-color);
+}
+
+.add-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px 0 var(--shadow-color);
+}
+
+.add-btn i {
+    color: var(--surface-color);
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.filter-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    justify-content: center;
+}
+
+.filter {
+    background-color: var(--surface-color);
+    border: 3px solid var(--border-color);
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 4px 4px 0 var(--shadow-color);
+    transition: all 0.1s ease;
+    color: var(--text-color);
+}
+
+.filter:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow-color);
+}
+
+.filter.active {
+    background-color: var(--secondary-color);
+    color: var(--surface-color);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--shadow-color);
+}
+
+.filter:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+.todos-container {
+    min-height: 200px;
+    position: relative;
+}
+
+.todos-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    margin-bottom: 15px;
+    background-color: var(--surface-color);
+    border: 3px solid var(--border-color);
+    box-shadow: 5px 5px 0 var(--shadow-color);
+    transition: all 0.1s ease;
+}
+
+.todo-item:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--shadow-color);
+}
+
+.todo-item.completed {
+    background-color: #E8F5E8;
+}
+
+.checkbox-container {
+    position: relative;
+    cursor: pointer;
+}
+
+.todo-checkbox {
+    width: 25px;
+    height: 25px;
+    appearance: none;
+    border: 3px solid var(--border-color);
+    background-color: var(--surface-color);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.1s ease;
+}
+
+.todo-checkbox:checked {
+    background-color: var(--success-color);
+    transform: scale(1.1);
+}
+
+.todo-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--surface-color);
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.todo-item-text {
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: all 0.2s ease;
+}
+
+.todo-item.completed .todo-item-text {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+}
+
+.delete-btn {
+    background-color: var(--danger-color);
+    border: 3px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 3px 3px 0 var(--shadow-color);
+    transition: all 0.1s ease;
+}
+
+.delete-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--shadow-color);
+}
+
+.delete-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+.delete-btn i {
+    color: var(--surface-color);
+    font-size: 1.1rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state.hidden {
+    display: none;
+}
+
+.empty-state i {
+    font-size: 4rem;
+    color: var(--border-color);
+    margin-bottom: 20px;
+    display: block;
+    transform: rotate(-10deg);
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.footer {
+    background-color: var(--border-color);
+    padding: 25px 30px;
+    border-top: 4px solid var(--border-color);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.items-count {
+    color: var(--surface-color);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.clear-btn {
+    background-color: var(--accent-color);
+    border: 3px solid var(--surface-color);
+    padding: 12px 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--surface-color);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.1s ease;
+}
+
+.clear-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+.clear-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+.clear-btn i {
+    font-size: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+    .container {
+        margin: 10px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .filter-section {
+        flex-wrap: wrap;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+        text-align: center;
+    }
+
+    .todo-item {
+        padding: 15px;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+}

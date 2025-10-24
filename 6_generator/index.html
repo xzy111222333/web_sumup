@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>Password Generator</h1>
+            
+            <div class="password-display">
+                <input type="text" id="password" readonly placeholder="Generated Password">
+                <button id="copy-btn" class="copy-btn" title="Copy Password">
+                    <i class="far fa-copy"></i>
+                </button>
+            </div>
+
+            <div class="options-container">
+                <div class="option-row">
+                    <label for="length">Password Length</label>
+                    <div class="slider-container">
+                        <input type="range" id="length" min="4" max="32" value="13">
+                        <span id="length-value">13</span>
+                    </div>
+                </div>
+
+                <div class="option-row checkbox-row">
+                    <label for="uppercase">Include Uppercase</label>
+                    <input type="checkbox" id="uppercase">
+                </div>
+
+                <div class="option-row checkbox-row">
+                    <label for="lowercase">Include Lowercase</label>
+                    <input type="checkbox" id="lowercase" checked>
+                </div>
+
+                <div class="option-row checkbox-row">
+                    <label for="numbers">Include Numbers</label>
+                    <input type="checkbox" id="numbers" checked>
+                </div>
+
+                <div class="option-row checkbox-row">
+                    <label for="symbols">Include Symbols</label>
+                    <input type="checkbox" id="symbols">
+                </div>
+            </div>
+
+            <button id="generate-btn" class="generate-btn">
+                <i class="fas fa-key"></i>
+                Generate Password
+            </button>
+
+            <div class="strength-container">
+                <p>Password Strength:</p>
+                <div class="strength-bar-wrapper">
+                    <div class="strength-bar"></div>
+                </div>
+                <span id="strength-label">Medium</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    我的待办清单
+                </h1>
+                <div class="date" id="date"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="input-section">
+                <div class="input-container">
+                    <input
+                        type="text"
+                        id="task-input"
+                        placeholder="添加新任务..."
+                        class="task-input"
+                    >
+                    <button id="add-task" class="add-btn">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <button class="filter active" data-filter="all">全部</button>
+                <button class="filter" data-filter="active">待完成</button>
+                <button class="filter" data-filter="completed">已完成</button>
+            </div>
+
+            <div class="todos-container">
+                <ul id="todos-list" class="todos-list"></ul>
+                <div class="empty-state hidden">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <p>暂无任务，添加你的第一个任务吧！</p>
+                </div>
+            </div>
+
+            <footer class="footer">
+                <div class="footer-content">
+                    <span id="items-left" class="items-count">0 items left</span>
+                    <button id="clear-completed" class="clear-btn">
+                        <i class="fa-solid fa-times"></i>
+                        清除已完成
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

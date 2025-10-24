@@ -1,0 +1,153 @@
+/* Color palette (avoid deep blue and purple) */
+:root {
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --text: #2a2d34;
+  --muted: #6b7280;
+  --primary: #2e9ad0; /* medium sky blue, not deep */
+  --primary-pressed: #2186b7;
+  --success: #27ae60;
+  --error: #e53935;
+  --border: #e5e7eb;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Arial,
+    'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji', sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+
+.page {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 36px 32px 28px;
+}
+
+.card > h1 {
+  margin: 0 0 20px;
+  font-size: 40px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-item {
+  display: grid;
+  gap: 8px;
+}
+
+.form-item label {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.form-item input[type="text"],
+.form-item input[type="email"],
+.form-item input[type="password"] {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  font-size: 18px;
+  color: var(--text);
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-item input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(46, 154, 208, 0.15);
+}
+
+/* highlight label when any child (input) is focused */
+.form-item:focus-within label {
+  color: var(--primary);
+}
+
+.form-item.success input {
+  border-color: var(--success);
+}
+
+.form-item.error input {
+  border-color: var(--error);
+}
+
+.hint {
+  display: block;
+  min-height: 18px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.form-item.error .hint {
+  color: var(--error);
+}
+
+.form-item.success .hint {
+  color: var(--success);
+}
+
+.btn {
+  margin-top: 6px;
+  height: 54px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(180deg, var(--primary), var(--primary-pressed));
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.15s ease;
+}
+
+.btn:hover {
+  filter: brightness(1.05);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+@media (max-width: 420px) {
+  .card {
+    padding: 28px 20px 22px;
+  }
+
+  .card > h1 {
+    font-size: 32px;
+  }
+}
+
+

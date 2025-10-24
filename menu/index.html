@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Finder - 菜单搜索</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1 class="title">
+          <i class="fas fa-utensils"></i> Recipe Finder
+        </h1>
+        <p class="subtitle">Find delicious recipes from around the world</p>
+        <p class="api-credit">
+          Data from <a href="https://www.themealdb.com/" target="_blank">TheMealDB</a> 👨‍🍳
+        </p>
+      </header>
+
+      <div class="search-container">
+        <input
+          type="text"
+          id="search-input"
+          class="search-input"
+          placeholder="Search for meals or keywords"
+        />
+        <button id="search-btn" class="search-btn">Search</button>
+      </div>
+
+      <div id="error-container" class="error-container hidden"></div>
+
+      <h2 id="result-heading" class="result-heading"></h2>
+
+      <div id="meals" class="meals-container"></div>
+
+      <div id="meal-details" class="meal-details hidden">
+        <button id="back-btn" class="back-btn">
+          <i class="fas fa-arrow-left"></i> Back to recipes
+        </button>
+        <div class="meal-details-content"></div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
